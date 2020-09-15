@@ -3,7 +3,7 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 
-# I'm not happy about this, temporary fix until I can figure out a better solution.
+# I'm not happy about this, temporary fix until I can figure out a better solution. see: https://click.palletsprojects.com/en/7.x/
 if len(sys.argv) == 1:
     print("This program checks for broken links. Please specify a webpage with --url <url to check> or -h for help.")
     sys.exit(1)
@@ -14,10 +14,15 @@ parser.add_argument('-u', '--url', '-url', metavar='', help='The url to check fo
 parser.add_argument('-f', '--file', '-file', metavar='', help='Checks through a specified html file that is located in the current working directory. Example: -f index.html')
 args = parser.parse_args()
 
-def link_check(soup):
+def checker(soup):
     for link in soup.find_all('a'):
         l = link.get('href')
-        req = requests.get(l)
+        #try to make a request, if it fails just throw unknown link
+        try:
+            req = requests.get(l)
+        except:
+            print(f"UNKNOWN LINK: {l}")
+
         if (req.status_code == 200):
             print(f"SUCCESSFUL LINK: {l}")
         elif (req.status_code == 300):
@@ -26,35 +31,26 @@ def link_check(soup):
             print(f"DEAD LINK (400 ERROR): {l}")
         elif (req.status_code == 500):
             print(f"DEAD LINK (500 ERROR): {l}")
-        else: 
-            print(f"UNKNOWN LINK: {l}")
 
-def url_check(url):
+def url_check():
     # Create a request from the command line arg
-    req = requests.get(args.url) #i dont think this is actually using the url object lul, fix this
+    req = requests.get(args.url)
 
     # Send the req to BS4 for parsing
     soup = BeautifulSoup(req.text, "html.parser")
 
-    # Finds all href tags in the parsed request and checks if broken
-    for a in soup.find_all(href=True):
-        if (req.status_code == 200):
-            print(f"SUCCESSFUL LINK: {a['href']}")
-        elif (req.status_code == 300):
-            print(f"REDIRECTED LINK: {a['href']}")
-        elif (req.status_code == 400 or req.status_code == 404):
-            print(f"DEAD LINK (CLIENT ERROR): {a['href']}")
-        elif (req.status_code == 500):
-            print(f"DEAD LINK (SERVER ERROR): {a['href']}")
-        else: 
-            print(f"UNKNOWN LINK: {a['href']}")
+    # send the soup now parsed object to the checker function
+    checker(soup)
 
 def file_check():
     with open(args.file, 'r') as f:
+        # create a soup object from the file
         soup = BeautifulSoup(f, "html.parser")
-        link_check(soup)
+
+        # send the now parsed soup object to the checker function
+        checker(soup)
 
 if (args.url):
-    url_check(args)
+    url_check()
 if (args.file):
     file_check()
