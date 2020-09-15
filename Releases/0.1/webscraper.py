@@ -14,6 +14,8 @@ parser.add_argument('-u', '--url', metavar='', required=True, help='The url to c
 parser.add_argument('-f', '--file', metavar='', help='Checks through a specified html file (not yet implemented.)')
 args = parser.parse_args()
 
+print(args)
+
 def url_check(url):
     # Create a request from the command line arg
     req = requests.get(args.url)
