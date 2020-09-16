@@ -33,7 +33,6 @@ def checker(soup):
         if 'https://' not in l:
             print(Fore.RED + "UNKNOWN LINK: " + l)
         elif req.status_code == 200:
-            #print("entered here")
             print(Fore.GREEN + "SUCCESS LINK: " + l)
         elif req.status_code == 300:
             print(Fore.GREY + "300 REDIRECTED LINK: " + l)
