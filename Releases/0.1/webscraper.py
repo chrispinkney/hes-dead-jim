@@ -11,11 +11,13 @@ if len(sys.argv) == 1:
     sys.exit(1)
 
 # Parse the command line arguments
-parser = argparse.ArgumentParser(description='See below for optional flags.')
+parser = argparse.ArgumentParser(description='See below for optional flags.', prefix_chars='-/')
 parser.add_argument('-u', '--url', '-url', metavar='',
                     help='The url to check for broken links. Example: -u http://google.ca')
 parser.add_argument('-f', '--file', '-file', metavar='',
                     help='Checks through a specified html file that is located in the current working directory. Example: -f index.html')
+parser.add_argument('-v', '--version', '-version', action='store_true',
+                    help='Specifies the version')
 args = parser.parse_args()
 
 
@@ -57,7 +59,13 @@ def file_check():
         checker(soup)
 
 
+def version():
+    print(Fore.BLUE + "Version 0.1.02")
+
+
 if args.url:
     url_check()
 if args.file:
     file_check()
+if args.version:
+    version()
