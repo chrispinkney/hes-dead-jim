@@ -22,24 +22,19 @@ args = parser.parse_args()
 def checker(soup):
     for link in soup.find_all('a'):
         l = link.get('href')
-        # try to make a request, if it fails just throw unknown link
-        # but req.status_code == 200 might be reached before the try is excuted (i.e. a bad link is sent first). options?
-        try:
-            req = requests.get(l)
-        except requests.exceptions.MissingSchema:
-            pass
 
-        # if the link doesn't begin with a valid schema, throw unknown link. "/t/contact_us" from youtube.com is not a valid link.
-        if 'https://' not in l:
+        if 'https://' not in l and 'http://' not in l:
             print(Fore.RED + "UNKNOWN LINK: " + l)
-        elif req.status_code == 200:
-            print(Fore.GREEN + "SUCCESS LINK: " + l)
-        elif req.status_code == 300:
-            print(Fore.GREY + "300 REDIRECTED LINK: " + l)
-        elif req.status_code == 400 or req.status_code == 404:
-            print(Fore.RED + "400 ERROR LINK: " + l)
-        elif req.status_code == 500:
-            print(Fore.RED + "500 ERROR LINK: " + l)
+        else:
+            req = requests.get(l)
+            if req.status_code in range(200, 226):
+                print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + l)
+            elif req.status_code in range(300, 308):
+                print(Fore.GREY + str(req.status_code) + " REDIRECTED LINK: " + l)
+            elif req.status_code in range(400, 420):
+                print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + l)
+            elif req.status_code in range(500, 599):
+                print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + l)
 
 
 def url_check():
