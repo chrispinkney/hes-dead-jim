@@ -1,5 +1,3 @@
-
-___
 # Table of Contents
  - [Introduction](#INTRODUCTION)
  - [Releases](#-Releases-)
