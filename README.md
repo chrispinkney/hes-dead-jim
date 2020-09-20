@@ -65,7 +65,9 @@ Hes' Dead Jim features the following optional features:
  - -v can be supplied to the program for current version information.
 #### Usage
 > git clone https://github.com/chrispinkney/OSD600.git
+
 > cd OSD600/He's Dead Jim
+
 > python hdj.py
 
 #### TODO
