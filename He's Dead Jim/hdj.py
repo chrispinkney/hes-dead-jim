@@ -2,7 +2,7 @@ import argparse
 import requests
 import sys
 from bs4 import BeautifulSoup
-from colorama import init, Fore
+from colorama import init, Fore, Back, Style
 init()
 
 # I'm not happy about this, temporary fix until I can figure out a better solution. see: https://click.palletsprojects.com/en/7.x/
@@ -60,7 +60,7 @@ def file_check():
 
 
 def version():
-    print(Fore.BLUE + "Version 0.1.02")
+    print(Style.BRIGHT + Back.BLUE + Fore.GREEN + "He's Dead, Jim. The Python based link-checker. " + Fore.BLACK + "Version 0.1.04")
 
 
 if args.url:
