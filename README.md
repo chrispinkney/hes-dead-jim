@@ -1,13 +1,13 @@
 # Table of Contents
- - [Introduction](#INTRODUCTION)
- - [Releases](#-Releases-)
+ - [Introduction](#introduction)
+ - [Releases](#releases)
     1. [He's Dead, Jim (Release 0.1)](#hes-dead-jim-release-01)
-		 - [Scope](#-DRIV_HEIGHT---FEATURE-ENGINEERING-)
-		 - [How It Works](#-DRIV_HEIGHT---PREDICTIONS-)
-		 - [Features](#features)
-		 - [Usage](#-DRIV_HEIGHT---PREDICTIONS-)
-		 - [TODO](#-DRIV_HEIGHT---PREDICTIONS-)
-		 - [Issues](#-DRIV_HEIGHT---PREDICTIONS-)
+		 - [Scope](#scope)
+		 - [How It Works](#how-it-works)
+		 - [Optional Features](#optional-features)
+		 - [Usage](#usage)
+		 - [TODO](#todo)
+		 - [Issues](#issues)
 
 ## INTRODUCTION
 My name is Chris and welcome to my OSD600 Repo.
