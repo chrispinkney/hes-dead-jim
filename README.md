@@ -1,7 +1,7 @@
 # Table of Contents
  - [Introduction](#INTRODUCTION)
  - [Releases](#-Releases-)
-    1. [He's Dead, Jim (Release 0.1)](https://github.com/chrispinkney/OSD600/tree/master/He's%20Dead%20Jim)
+    1. [He's Dead, Jim (Release 0.1)](#hes-dead-jim-release-01)
 		 - [Scope](#-DRIV_HEIGHT---FEATURE-ENGINEERING-)
 		 - [How It Works](#-DRIV_HEIGHT---PREDICTIONS-)
 		 - [Usage](#-DRIV_HEIGHT---PREDICTIONS-)
@@ -30,7 +30,7 @@ You can use it to track all the past and present student's progress over the nex
 [You can find the source here.](https://github.com/Seneca-CDOT/telescope)
 
 ## RELEASES
-### He's Dead, Jim (Release 0.1)
+### [He's Dead, Jim (Release 0.1)](https://github.com/chrispinkney/OSD600/tree/master/He%27s%20Dead%20Jim)
 <p align="center">
   <img src="./assets/hdj/hdj.gif" alt="He's Dead, Jim" width="738">
 </p>
