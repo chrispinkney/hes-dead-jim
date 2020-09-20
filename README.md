@@ -1,7 +1,9 @@
+
+___
 # Table of Contents
  - [Introduction](#INTRODUCTION)
  - [Releases](#-Releases-)
-    1. [He's Dead, Jim (Release 0.1)](#-DRIV_HEIGHT-)
+    1. [He's Dead, Jim (Release 0.1)](#https://github.com/chrispinkney/OSD600/tree/master/He's%20Dead%20Jim)
 		 - [Scope](#-DRIV_HEIGHT---FEATURE-ENGINEERING-)
 		 - [How It Works](#-DRIV_HEIGHT---PREDICTIONS-)
 		 - [Usage](#-DRIV_HEIGHT---PREDICTIONS-)
