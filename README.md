@@ -1,13 +1,13 @@
 # Table of Contents
- - [Introduction](#introduction)
- - [Releases](#releases)
+ - [Introduction](#INTRODUCTION)
+ - [Releases](#-Releases-)
     1. [He's Dead, Jim (Release 0.1)](#hes-dead-jim-release-01)
-		 - [Scope](#scope)
-		 - [How It Works](#how-it-works)
-		 - [Optional Features](#optional-features)
-		 - [Usage](#usage)
-		 - [TODO](#todo)
-		 - [Issues](#issues)
+		 - [Scope](#-DRIV_HEIGHT---FEATURE-ENGINEERING-)
+		 - [How It Works](#-DRIV_HEIGHT---PREDICTIONS-)
+		 - [Features](#features)
+		 - [Usage](#-DRIV_HEIGHT---PREDICTIONS-)
+		 - [TODO](#-DRIV_HEIGHT---PREDICTIONS-)
+		 - [Issues](#-DRIV_HEIGHT---PREDICTIONS-)
 
 ## INTRODUCTION
 My name is Chris and welcome to my OSD600 Repo.
@@ -62,6 +62,7 @@ He's Dead, Jim aggregates (a fancy word for saying *grabs*) all href tags on a s
 #### Optional Features
 Hes' Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
+ - -v can be supplied to the program for current version information.
 #### Usage
 > git clone https://github.com/chrispinkney/OSD600.git
 > cd OSD600/He's Dead Jim
