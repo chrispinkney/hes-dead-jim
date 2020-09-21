@@ -25,19 +25,23 @@ def checker(soup):
     for link in soup.find_all('a'):
         l = link.get('href')
 
-        if 'https://' not in l and 'http://' not in l:
+        try:
+            if 'https://' not in l and 'http://' not in l:
+                print(Fore.WHITE + "UNKNOWN LINK: " + l)
+            else:
+                req = requests.get(l)
+                if req.status_code in range(200, 226):
+                    print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + l)
+                elif req.status_code in range(300, 308):
+                    print(Fore.WHITE + str(req.status_code) + " REDIRECTED LINK: " + l)
+                elif req.status_code in range(400, 420):
+                    print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + l)
+                elif req.status_code in range(500, 599):
+                    print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + l)
+        except:
             print(Fore.WHITE + "UNKNOWN LINK: " + l)
-        else:
-            req = requests.get(l)
-            if req.status_code in range(200, 226):
-                print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + l)
-            elif req.status_code in range(300, 308):
-                print(Fore.WHITE + str(req.status_code) + " REDIRECTED LINK: " + l)
-            elif req.status_code in range(400, 420):
-                print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + l)
-            elif req.status_code in range(500, 599):
-                print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + l)
 
+# requests.exceptions.ConnectionError
 
 def url_check():
     # Create a request from the command line arg
