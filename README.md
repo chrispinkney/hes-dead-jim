@@ -64,6 +64,10 @@ Hes' Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
  - -v can be supplied to the program for current version information.
 #### Usage
+Install Python on your machine and reboot. Then:
+
+> pip install colorama bs4 argparse requests
+
 > git clone https://github.com/chrispinkney/OSD600.git
 
 > cd OSD600/He's Dead Jim
