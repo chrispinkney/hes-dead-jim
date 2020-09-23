@@ -63,6 +63,7 @@ He's Dead, Jim aggregates (a fancy word for saying *grabs*) all href tags on a s
 Hes' Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
  - -v can be supplied to the program for current version information.
+
 #### Usage
 Install Python on your machine and reboot. Then:
 
@@ -83,3 +84,9 @@ Install Python on your machine and reboot. Then:
  
 #### Issues
 Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/OSD600/issues).
+
+#### Contribution
+Feel free to make a Pull Request or Issue regarding and functionality and I'll get to it ASAP.
+
+#### Licence
+MIT License - A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
