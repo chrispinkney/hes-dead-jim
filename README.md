@@ -8,7 +8,9 @@
 		 - [Usage](#usage)
 		 - [TODO](#todo)
 		 - [Issues](#issues)
-
+		 - [Contribution](#contribution)
+		 - [Licence](#licence)
+		 
 ## INTRODUCTION
 My name is Chris and welcome to my OSD600 Repo.
 
