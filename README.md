@@ -62,7 +62,7 @@ He's Dead, Jim aggregates (a fancy word for saying *grabs*) all href tags on a s
 			 - Green for good, red for bad, grey for unknown.
 		 - Colorama is used for one of the optional feature requests for the program.
 #### Optional Features
-Hes' Dead Jim features the following optional features:
+He's Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
  - -v can be supplied to the program for current version information.
 
