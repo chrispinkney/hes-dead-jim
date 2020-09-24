@@ -41,7 +41,6 @@ def checker(soup):
         except:
             print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
 
-# requests.exceptions.ConnectionError
 
 def url_check():
     # Create a request from the command line arg
