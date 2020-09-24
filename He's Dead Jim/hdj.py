@@ -23,23 +23,23 @@ args = parser.parse_args()
 
 def checker(soup):
     for link in soup.find_all('a'):
-        l = link.get('href')
+        test_link = link.get('href')
 
         try:
-            if 'https://' not in l and 'http://' not in l:
-                print(Fore.WHITE + "UNKNOWN LINK: " + l)
+            if 'https://' not in test_link and 'http://' not in test_link:
+                print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
             else:
-                req = requests.get(l)
+                req = requests.get(test_link)
                 if req.status_code in range(200, 226):
-                    print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + l)
+                    print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + test_link)
                 elif req.status_code in range(300, 308):
-                    print(Fore.WHITE + str(req.status_code) + " REDIRECTED LINK: " + l)
+                    print(Fore.WHITE + str(req.status_code) + " REDIRECTED LINK: " + test_link)
                 elif req.status_code in range(400, 420):
-                    print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + l)
+                    print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
                 elif req.status_code in range(500, 599):
-                    print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + l)
+                    print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + test_link)
         except:
-            print(Fore.WHITE + "UNKNOWN LINK: " + l)
+            print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
 
 # requests.exceptions.ConnectionError
 
