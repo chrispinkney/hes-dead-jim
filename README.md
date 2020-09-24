@@ -3,7 +3,7 @@
     1. [He's Dead, Jim (Release 0.1)](#hes-dead-jim-release-01)
 		 - [Scope](#scope)
 		 - [How It Works](#how-it-works)
-		 - [Libraries] (#libraries)
+		 - [Libraries](#libraries)
 		 - [Optional Features](#optional-features)
 		 - [Usage](#usage)
 		 - [TODO](#todo)
