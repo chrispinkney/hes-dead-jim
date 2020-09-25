@@ -9,6 +9,7 @@
  - [Optional Features](#optional-features)
  - [Usage](#usage)
  - [Issues](#issues)
+ - [TODO](https://github.com/chrispinkney/He-s-Dead-Jim/wiki/TODO)
  - [Contribution](#contribution)
  - [Licence](#licence)
 		 
