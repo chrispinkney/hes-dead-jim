@@ -1,18 +1,15 @@
 # Table of Contents
- - [Releases](#releases)
-    1. [He's Dead, Jim (Release 0.1)](#hes-dead-jim-release-01)
-		 - [Scope](#scope)
-		 - [How It Works](#how-it-works)
-		 - [Libraries](#libraries)
-		 - [Optional Features](#optional-features)
-		 - [Usage](#usage)
-		 - [TODO](#todo)
-		 - [Issues](#issues)
-		 - [Contribution](#contribution)
-		 - [Licence](#licence)
+ - [Scope](#scope)
+ - [How It Works](#how-it-works)
+ - [Libraries](#libraries)
+ - [Optional Features](#optional-features)
+ - [Usage](#usage)
+ - [Issues](#issues)
+ - [Contribution](#contribution)
+ - [Licence](#licence)
 		 
 ## RELEASES
-### [He's Dead, Jim (Release 0.1)](https://github.com/chrispinkney/OSD600/tree/master/He%27s%20Dead%20Jim)
+### He's Dead, Jim (Release 0.1)
 <p align="center">
   <img src="./assets/hdj/hdj.gif" alt="He's Dead, Jim" width="738">
 </p>
@@ -51,18 +48,11 @@ Install [Python](https://www.python.org/downloads/) on your machine and reboot. 
 
 > pip install colorama bs4 argparse requests
 
-> git clone https://github.com/chrispinkney/OSD600.git
+> git clone https://github.com/chrispinkney/He-s-Dead-Jim.git
 
-> cd OSD600/He's Dead Jim
+> cd He-s-Dead-Jim
 
 > python hdj.py
-
-#### TODO
- - ~~Add command line arguments~~
- - ~~Scrape all links in a file~~
- - ~~Scrape all links in a URL~~
- - ~~Add -v for version information~~
- - ~~Colorize output~~
  
 #### Issues
 Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/OSD600/issues).
