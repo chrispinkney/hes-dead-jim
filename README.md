@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/hdj/hdj.gif" alt="He's Dead, Jim" width="738">
+</p>
+
 # Table of Contents
  - [Scope](#scope)
  - [How It Works](#how-it-works)
@@ -8,11 +12,9 @@
  - [Contribution](#contribution)
  - [Licence](#licence)
 		 
-## RELEASES
-### He's Dead, Jim (Release 0.1)
-<p align="center">
-  <img src="./assets/hdj/hdj.gif" alt="He's Dead, Jim" width="738">
-</p>
+## He's Dead, Jim (Release 0.1)
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/nkt7lhurzib68y7sfk0g.jpg)
 
 #### Scope
 For our first project we are tasked with building a command-line tool for finding and reporting dead links (e.g., broken URLs) in a file. Users might use the tool to help locate broken URLs in an HTML page, for example. The tool can be written in any programming language.
