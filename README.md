@@ -55,7 +55,7 @@ Install [Python](https://www.python.org/downloads/) on your machine and reboot. 
 > python hdj.py
  
 #### Issues
-Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/OSD600/issues).
+Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/He-s-Dead-Jim/issues).
 
 #### Contribution
 Feel free to make a Pull Request or Issue regarding and functionality and I'll get to it ASAP.
