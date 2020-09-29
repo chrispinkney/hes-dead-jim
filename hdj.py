@@ -2,6 +2,7 @@ import argparse
 import requests
 import sys
 from bs4 import BeautifulSoup
+from datetime import datetime
 from colorama import init, Fore, Back, Style
 init()
 
@@ -22,6 +23,7 @@ args = parser.parse_args()
 
 
 def checker(soup):
+    start_time = datetime.now()  # make a timer for fun
     for link in soup.find_all('a'):
         test_link = link.get('href')
 
@@ -29,17 +31,18 @@ def checker(soup):
             if 'https://' not in test_link and 'http://' not in test_link:
                 print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
             else:
-                req = requests.get(test_link)
+                req = requests.head(test_link)  # using head only instead of body
                 if req.status_code in range(200, 226):
                     print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + test_link)
                 elif req.status_code in range(300, 308):
-                    print(Fore.WHITE + str(req.status_code) + " REDIRECTED LINK: " + test_link)
+                    print(Fore.YELLOW + str(req.status_code) + " REDIRECTED LINK: " + test_link)
                 elif req.status_code in range(400, 420):
                     print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
                 elif req.status_code in range(500, 599):
                     print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + test_link)
         except:
             print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
+    print(datetime.now() - start_time)  # end timer
 
 
 def url_check():
