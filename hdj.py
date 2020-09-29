@@ -35,7 +35,9 @@ def checker(soup):
                 if req.status_code in range(200, 226):
                     print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + test_link)
                 elif req.status_code in range(300, 308):
-                    print(Fore.YELLOW + str(req.status_code) + " REDIRECTED LINK: " + test_link)
+                    # We need a new object here because allow_redirects=False from above doesn't keep track of .history, or .url.
+                    req2 = requests.head(test_link, allow_redirects=True)
+                    print(Fore.YELLOW + "300 REDIRECTED ERROR. " + str(len(req2.history)) + " HOP(S) FROM " + test_link + " ULTIMATELY ENDED AT " + req2.url + " WITH STATUS CODE: " + Fore.WHITE + str(req2.status_code))
                 elif req.status_code in range(400, 420):
                     print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
                 elif req.status_code in range(500, 599):
