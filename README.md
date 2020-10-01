@@ -43,6 +43,7 @@ He's Dead, Jim aggregates (a fancy word for saying *grabs*) all href tags on a s
 He's Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
  - -v can be supplied to the program for current version information.
+ - Program incorporates multi-threading to allow for parallelization of the program.
 
 #### Usage
 Install [Python](https://www.python.org/downloads/) on your machine and reboot. Then:

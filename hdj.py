@@ -1,6 +1,7 @@
 import argparse
 import requests
 import sys
+import threading
 from bs4 import BeautifulSoup
 from datetime import datetime
 from colorama import init, Fore, Back, Style
@@ -72,8 +73,8 @@ def version():
 
 
 if args.url:
-    url_check()
+    threading.Thread(target=url_check()).start()
 if args.file:
-    file_check()
+    threading.Thread(target=file_check()).start()
 if args.version:
     version()
