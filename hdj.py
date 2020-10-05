@@ -7,6 +7,8 @@ from datetime import datetime
 from colorama import init, Fore, Back, Style
 init()
 
+CLICOLOR = 0
+
 # I'm not happy about this, temporary fix until I can figure out a better solution. see: https://click.palletsprojects.com/en/7.x/
 if len(sys.argv) == 1:
     print("This program checks for broken links. Please specify -h for help.")
@@ -25,26 +27,50 @@ args = parser.parse_args()
 
 def checker(soup):
     start_time = datetime.now()  # make a timer for fun
-    for link in soup.find_all('a'):
-        test_link = link.get('href')
+    if CLICOLOR == 0:
+        for link in soup.find_all('a'):
+            test_link = link.get('href')
 
-        try:
-            if 'https://' not in test_link and 'http://' not in test_link:
+            try:
+                if 'https://' not in test_link and 'http://' not in test_link:
+                    print("UNKNOWN LINK: " + test_link)
+                else:
+                    req = requests.head(test_link)  # using head only instead of body
+                    if req.status_code in range(200, 226):
+                        print(str(req.status_code) + " SUCCESSFUL: " + test_link)
+                    elif req.status_code in range(300, 308):
+                        # We need a new object here because allow_redirects=False from above doesn't keep track of .history, or .url.
+                        req2 = requests.head(test_link, allow_redirects=True)
+                        print("300 REDIRECTED ERROR. " + str(len(req2.history)) + " HOP(S) FROM " + test_link + " ULTIMATELY ENDED AT " + req2.url + " WITH STATUS CODE: " + str(req2.status_code))
+                    elif req.status_code in range(400, 420):
+                        print(str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
+                    elif req.status_code in range(500, 599):
+                        print(str(req.status_code) + " SERVER ERROR WITH LINK: " + test_link)
+            except:
+                print("UNKNOWN LINK: " + test_link)
+    else:
+        for link in soup.find_all('a'):
+            test_link = link.get('href')
+
+            try:
+                if 'https://' not in test_link and 'http://' not in test_link:
+                    print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
+                else:
+                    req = requests.head(test_link)  # using head only instead of body
+                    if req.status_code in range(200, 226):
+                        print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + test_link)
+                    elif req.status_code in range(300, 308):
+                        # We need a new object here because allow_redirects=False from above doesn't keep track of .history, or .url.
+                        req2 = requests.head(test_link, allow_redirects=True)
+                        print(Fore.YELLOW + "300 REDIRECTED ERROR. " + str(len(
+                            req2.history)) + " HOP(S) FROM " + test_link + " ULTIMATELY ENDED AT " + req2.url + " WITH STATUS CODE: " + Fore.WHITE + str(
+                            req2.status_code))
+                    elif req.status_code in range(400, 420):
+                        print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
+                    elif req.status_code in range(500, 599):
+                        print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + test_link)
+            except:
                 print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
-            else:
-                req = requests.head(test_link)  # using head only instead of body
-                if req.status_code in range(200, 226):
-                    print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + test_link)
-                elif req.status_code in range(300, 308):
-                    # We need a new object here because allow_redirects=False from above doesn't keep track of .history, or .url.
-                    req2 = requests.head(test_link, allow_redirects=True)
-                    print(Fore.YELLOW + "300 REDIRECTED ERROR. " + str(len(req2.history)) + " HOP(S) FROM " + test_link + " ULTIMATELY ENDED AT " + req2.url + " WITH STATUS CODE: " + Fore.WHITE + str(req2.status_code))
-                elif req.status_code in range(400, 420):
-                    print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + test_link)
-                elif req.status_code in range(500, 599):
-                    print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + test_link)
-        except:
-            print(Fore.WHITE + "UNKNOWN LINK: " + test_link)
     print(datetime.now() - start_time)  # end timer
 
 
