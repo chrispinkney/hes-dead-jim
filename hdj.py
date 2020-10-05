@@ -73,8 +73,16 @@ def version():
 
 
 if args.url:
-    threading.Thread(target=url_check()).start()
+    try:
+        threading.Thread(target=url_check()).start()
+    except:
+        sys.exit(1)
+    sys.exit(0)
 if args.file:
-    threading.Thread(target=file_check()).start()
+    try:
+        threading.Thread(target=file_check()).start()
+    except:
+        sys.exit(1)
+    sys.exit(0)
 if args.version:
     version()
