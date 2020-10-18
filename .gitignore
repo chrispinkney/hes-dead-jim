@@ -1,1 +1,5 @@
 .idea
+build
+dist
+He_s_Dead_Jim.egg-info
+__pycache__/

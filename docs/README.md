@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/hdj/hdj.gif" alt="He's Dead, Jim" width="738">
+  <img src="assets\hdj\hdj.gif" alt="He's Dead, Jim" width="738">
 </p>
 
 # Table of Contents
@@ -48,13 +48,13 @@ He's Dead Jim features the following optional features:
 #### Usage
 Install [Python](https://www.python.org/downloads/) on your machine and reboot. Then:
 
-> pip install colorama bs4 argparse requests
-
 > git clone https://github.com/chrispinkney/He-s-Dead-Jim.git
 
 > cd He-s-Dead-Jim
 
-> python hdj.py
+> pip install . 
+
+> python sample/hdj.py
  
 #### Issues
 Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/He-s-Dead-Jim/issues).
