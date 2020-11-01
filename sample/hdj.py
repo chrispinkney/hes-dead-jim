@@ -13,7 +13,6 @@ def main(args):
     if args.url:
         try:
             soup = hdj_linkchecker.url_check(args.url)
-            # hdj_linkchecker.checker(soup)
             threading.Thread(target=hdj_linkchecker.checker(soup)).start()
         except:
             sys.exit(1)
@@ -21,15 +20,19 @@ def main(args):
     elif args.file:
         try:
             soup = hdj_fileio.file_check(args.file)
-            # hdj_linkchecker.checker(soup)
             threading.Thread(target=hdj_linkchecker.checker(soup)).start()
+        except:
+            sys.exit(1)
+        sys.exit(0)
+    elif args.telescope:
+        try:
+            hdj_linkchecker.telescope()
         except:
             sys.exit(1)
         sys.exit(0)
     elif args.ignore:
         try:
             soup = hdj_linkchecker.ignore(args.ignore[0][0], args.ignore[0][1])
-            # hdj_linkchecker.checker(soup)
             threading.Thread(target=hdj_linkchecker.checker(soup)).start()
         except:
             sys.exit(1)
@@ -49,6 +52,8 @@ parser.add_argument('-u', '--url', '-url', metavar='',
                     help='The url to check for broken links. Example: -u https://google.ca')
 parser.add_argument('-f', '--file', '-file', metavar='',
                     help='Checks through a specified html file that is located in the current working directory. Example: -f index.html')
+parser.add_argument('-t', '--telescope', '-telescope', action='store_true',
+                    help='Function to download the last 10 indexed posts from Telescope (must be running locally)')
 parser.add_argument('-i', '--ignore', '-ignore', metavar='', nargs=2, action='append',
                     help='Specify a file filled with links to ignore when checking a specified page.')
 parser.add_argument('-v', '--version', '-version', action='store_true',
