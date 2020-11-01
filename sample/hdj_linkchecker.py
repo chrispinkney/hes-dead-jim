@@ -1,7 +1,7 @@
 import hdj_fileio
 from bs4 import BeautifulSoup
 from datetime import datetime
-from colorama import init, Fore
+from colorama import init, Fore, Style
 import requests
 import re
 init()
@@ -50,14 +50,14 @@ def url_check(url):
 #Various link status code checkers start here.
 def status_check_unknown(link):
     if CLICOLOR:
-        print(Fore.WHITE + "UNKNOWN LINK: " + link)
+        print(Fore.WHITE + "UNKNOWN LINK: " + link + Style.RESET_ALL)
     else:
         print("UNKNOWN LINK: " + link)
 
 
 def status_check_200(req, link):
     if CLICOLOR:
-        print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + link)
+        print(Fore.GREEN + str(req.status_code) + " SUCCESSFUL: " + link + Style.RESET_ALL)
     else:
         print(str(req.status_code) + " SUCCESSFUL: " + link)
 
@@ -67,7 +67,7 @@ def status_check_300(req, link):
     if CLICOLOR:
         print(Fore.YELLOW + "300 REDIRECTED ERROR. " + str(len(
             req.history)) + " HOP(S) FROM " + link + " ULTIMATELY ENDED AT " + req.url + " WITH STATUS CODE: " + Fore.WHITE + str(
-            req.status_code))
+            req.status_code) + Style.RESET_ALL)
     else:
         print("300 REDIRECTED ERROR. " + str(len(
             req.history)) + " HOP(S) FROM " + link + " ULTIMATELY ENDED AT " + req.url + " WITH STATUS CODE: " + str(
@@ -76,14 +76,14 @@ def status_check_300(req, link):
 
 def status_check_400(req, link):
     if CLICOLOR:
-        print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + link)
+        print(Fore.RED + str(req.status_code) + " CLIENT ERROR WITH LINK: " + link + Style.RESET_ALL)
     else:
         print(str(req.status_code) + " CLIENT ERROR WITH LINK: " + link)
 
 
 def status_check_500(req, link):
     if CLICOLOR:
-        print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + link)
+        print(Fore.RED + str(req.status_code) + " SERVER ERROR WITH LINK: " + link + Style.RESET_ALL)
     else:
         print(str(req.status_code) + " SERVER ERROR WITH LINK: " + link)
 #Various link status code checkers end here.
@@ -106,7 +106,7 @@ def ignore(ignored_links_file, file_to_check):
 
 
 """
-Regex for URL checking. This function is used in conjuuction with ignore().
+Regex for URL checking. This function is used in conjunction with ignore().
 """
 def regex(file):
     # r = r"(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
@@ -121,3 +121,18 @@ def regex(file):
         quit()
     else:
         return urls
+
+
+"""
+Function to download the last 10 indexed posts from Telescope's backend (must be running locally) 
+"""
+def telescope():
+    baseURL = 'http://localhost:3000/posts' # Specify Telescope's backend's base URL (Can also use Telescope's actual URL)
+    res = requests.get(baseURL).json() # get a response from the base URL's json
+    for response in res: # For each object in the JSON
+        id = response.get("id")
+        post = (f'{baseURL}/{id}') # Get the ID and create a post URL
+        print(f"Testing Post: {post}")
+        post = requests.get(post, headers={'Accept': 'text/html'}) # Create a request from that post's URL
+        soup = BeautifulSoup(post.text, "html.parser")
+        checker(soup) # And create a soup object and send it to checker()
