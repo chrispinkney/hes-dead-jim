@@ -21,24 +21,6 @@ For our first project we are tasked with building a command-line tool for findin
 #### How It Works
 He's Dead, Jim aggregates (a fancy word for saying *grabs*) all href tags on a single page/file and creates get requests for each link on the page. Those requests are then reported back to the user along with the status code and a delightful colour coded message indicating the status of each link.
 
-#### Libraries
- - [Requests](https://requests.readthedocs.io/en/master/)
-	 - Requests is an elegant and simple HTTP library for Python, built for human beings.
-		 - It grabs the specified URL and saves it for Beautiful Soup to parse and sort.
-		 - Requests is also in charge of checking each link.
- - [Beautiful Soup 4](https://www.crummy.com/software/BeautifulSoup/)
-	 - Beautiful Soup is a Python library designed for quick turnaround projects like screen-scraping.
-		 - BS4 will grab and store each link from the HTML code of a web page specified (fun fact: this is known as *scraping*).
- - [Argparse](https://github.com/ThomasWaldmann/argparse/)
-	 - Argparse makes it easy to write user friendly command line interfaces in Python.
-		 - Argparse is in charge of allowing the user to specify which link or file they'd like to run the program on.
-		 - Users can specify -f for file-based link checking or -u for url-based link checking. The file must be in the same directory.
- - [Colorama](https://github.com/tartley/colorama)
-	 - Colorama is a simple cross-platform program that colors program's output terminal text. It is written in Python.
-		 - It colour codes the status of the link returned by Requests.
-			 - Green for good, red for bad, grey for unknown.
-		 - Colorama is used for one of the optional feature requests for the program.
-
 #### Optional Features
 He's Dead Jim features the following optional features:
  - Colourized output. Good URLs are printed in green, bad URLs are printed in red, and unknown URLs in gray.
@@ -60,6 +42,7 @@ Install [Python](https://www.python.org/downloads/) on your machine and reboot. 
 Current issues in the projects can be found on the [repo's issues page](https://github.com/chrispinkney/He-s-Dead-Jim/issues).
 
 #### Contribution
+Please be sure to read [CONTRIBUTING.md](CONTRIBUTING.md) prior to any development. 
 Feel free to make a Pull Request or Issue regarding and functionality and I'll get to it ASAP.
 
 #### Licence
