@@ -5,3 +5,4 @@ __pycache__/
 .idea/usage.statistics.xml
 .idea/tasks.xml
 workspace.xml
+.idea/dictionaries/
