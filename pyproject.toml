@@ -12,5 +12,10 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | .github
+  | .idea
+  | assets
+  | hdj_env
+  | docs
 )/
 '''
