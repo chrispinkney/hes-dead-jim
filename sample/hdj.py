@@ -13,12 +13,33 @@ Command link argument program control
 def main(arguments):
     if arguments.url:
         try:
-            soup = hdj_linkchecker.url_check(arguments.url)
+            soup = hdj_linkchecker.make_soup_object(arguments.url)
             threading.Thread(target=hdj_linkchecker.checker(soup)).start()
         except Exception as e:
             print("Threading exception handled in Main. Details of the Exception: ", e)
             sys.exit(1)
         sys.exit(0)
+    if arguments.surl:
+        req = hdj_linkchecker.single_link_check(arguments.surl)
+        try:
+            if req in range(200, 226):
+                print(
+                    f"Status code for {arguments.surl} is good: {req}. Looks like it's up!"
+                )
+            elif req in range(400, 420):
+                print(
+                    f"Status code for {arguments.surl} is bad: {req}. Can't find what you want!"
+                )
+
+            # Garbage way of checking for user input
+            answer = input(
+                f"Would you like to test the links at: {arguments.surl}? (Y/N) "
+            )
+            if answer == "Y" or answer == "y":
+                soup = hdj_linkchecker.make_soup_object(arguments.surl)
+                threading.Thread(target=hdj_linkchecker.checker(soup)).start()
+        except ConnectionError:
+            print(f"Having issues working with {arguments.surl}. Is it a valid URL?")
     elif arguments.file:
         try:
             soup = hdj_fileio.file_check(arguments.file)
@@ -63,6 +84,13 @@ parser.add_argument(
     "-url",
     metavar="",
     help="The url to check for broken links. Example: -u https://google.ca",
+)
+parser.add_argument(
+    "-su",
+    "--surl",
+    "-singleurl",
+    metavar="",
+    help="Checks the status of the link passed to the checker. Example: -su https://google.ca",
 )
 parser.add_argument(
     "-f",

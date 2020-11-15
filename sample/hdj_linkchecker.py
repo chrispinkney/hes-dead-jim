@@ -1,4 +1,8 @@
-import hdj_fileio
+# Fixes pytest from screaming at me about not being able to import a local package
+try:  # pragma: no cover
+    from sample import hdj_fileio
+except ModuleNotFoundError:  # pragma: no cover
+    import hdj_fileio
 from bs4 import BeautifulSoup
 from datetime import datetime
 from colorama import init, Fore, Style
@@ -51,11 +55,15 @@ URL checker function, runs if CLI args specify a url
 """
 
 
-def url_check(url):
+def make_soup_object(url):
     req = requests.get(url)
     soup = BeautifulSoup(req.text, "html.parser")
-    # hdj_linkchecker.checker(soup)
     return soup
+
+
+def single_link_check(url):
+    req = requests.get(url)
+    return req.status_code
 
 
 # Various link status code checkers start here.
@@ -152,7 +160,7 @@ def ignore(ignored_links_file, file_to_check):
             "could not be opened. Please check if your path "
             "is correct or if the file exists."
         )
-        quit()
+        raise
 
 
 """

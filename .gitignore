@@ -5,7 +5,9 @@ hdj_env
 __pycache__/
 .idea/usage.statistics.xml
 .idea/workspace.xml
+.idea/He-s-Dead-Jim.iml
 .idea/tasks.xml
 workspace.xml
 .idea/dictionaries/
 debug.log
+.coverage
