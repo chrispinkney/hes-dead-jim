@@ -3,6 +3,8 @@ dist
 He_s_Dead_Jim.egg-info
 __pycache__/
 .idea/usage.statistics.xml
+.idea/workspace.xml
 .idea/tasks.xml
 workspace.xml
 .idea/dictionaries/
+debug.log
