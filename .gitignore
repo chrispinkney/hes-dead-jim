@@ -7,6 +7,7 @@ __pycache__/
 .idea/workspace.xml
 .idea/He-s-Dead-Jim.iml
 .idea/tasks.xml
+.idea/dataSources.local.xml
 workspace.xml
 .idea/dictionaries/
 debug.log
