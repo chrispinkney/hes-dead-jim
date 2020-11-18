@@ -1,6 +1,6 @@
 # Fixes pytest from screaming at me about not being able to import a local package
 try:  # pragma: no cover
-    from sample import hdj_fileio
+    from src import hdj_fileio
 except ModuleNotFoundError:  # pragma: no cover
     import hdj_fileio
 from bs4 import BeautifulSoup

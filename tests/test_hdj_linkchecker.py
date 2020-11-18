@@ -1,4 +1,4 @@
-import sample.hdj_linkchecker as lc
+import src.hdj_linkchecker as lc
 import requests
 import pytest
 

@@ -1,5 +1,5 @@
 import pytest
-import sample.hdj_fileio as fio
+import src.hdj_fileio as fio
 
 
 # Test that file_check_ignored throws an error if tested with bad filepaths
