@@ -30,7 +30,7 @@ def test_get_request_404(monkeypatch):
     suchthat the request is always 404 for a given link.
     """
 
-    # Create a mocked object with an http status_code of 200.
+    # Create a mocked object with an http status_code of 404.
     class MockResponse:
         def __init__(self):
             self.status_code = 404
