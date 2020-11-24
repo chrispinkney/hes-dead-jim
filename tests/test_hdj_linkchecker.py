@@ -89,3 +89,70 @@ def test_make_soup_object(monkeypatch):
     soup = lc.make_soup_object("https://telescope.cdot.systems/")
 
     assert str(soup) == "<p>Oh good, more blogs.</p>"
+
+
+# Tests that status_check_unknown() still returns coloured output
+def test_status_check_unknown(capsys):
+    expected = "\x1b[37mUNKNOWN LINK: https://google.ca\x1b[0m\n"
+    lc.status_check_unknown("https://google.ca")
+    captured = capsys.readouterr()
+    assert captured.out == expected
+
+
+# Tests that status_check_200() still returns coloured output
+def test_status_check_200(capsys, monkeypatch):
+    class MockResponse:
+        def __init__(self):
+            self.status_code = 200
+
+    mock = MockResponse()
+
+    expected = "\x1b[32m200 SUCCESSFUL: https://google.ca\x1b[0m\n"
+    lc.status_check_200(mock, "https://google.ca")
+    captured = capsys.readouterr()
+
+    assert captured.out == expected
+
+
+# Tests that status_check_300() still returns coloured output
+def test_status_check_300(capsys):
+    class MockResponse:
+        def __init__(self):
+            self.status_code = 300
+
+    mock = MockResponse()
+
+    expected = "\x1b[33m300 REDIRECTED ERROR. 1 HOP(S) FROM https://google.ca ULTIMATELY ENDED AT https://www.google.ca/ WITH STATUS CODE: \x1b[37m200\x1b[0m\n"
+    lc.status_check_300(mock, "https://google.ca")
+    captured = capsys.readouterr()
+    assert captured.out == expected
+
+
+# Tests that status_check_400() still returns coloured output
+def test_status_check_400(capsys):
+    class MockResponse:
+        def __init__(self):
+            self.status_code = 400
+
+    mock = MockResponse()
+
+    expected = "\x1b[31m400 CLIENT ERROR WITH LINK: https://google.ca\x1b[0m\n"
+    lc.status_check_400(mock, "https://google.ca")
+    captured = capsys.readouterr()
+
+    assert captured.out == expected
+
+
+# Tests that status_check_500() still returns coloured output
+def test_status_check_500(capsys):
+    class MockResponse:
+        def __init__(self):
+            self.status_code = 500
+
+    mock = MockResponse()
+
+    expected = "\x1b[31m500 SERVER ERROR WITH LINK: https://google.ca\x1b[0m\n"
+    lc.status_check_500(mock, "https://google.ca")
+    captured = capsys.readouterr()
+
+    assert captured.out == expected
