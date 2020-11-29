@@ -19,6 +19,7 @@ setuptools.setup(
         "datetime == 4.3",
         "colorama == 0.4.4",
         "black == 20.8b1",
+        "flake8 == 3.8.4",
         "pre-commit == 2.7.1",
         "pytest == 6.1.2",
         "pytest-cov == 2.10.1",
