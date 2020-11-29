@@ -42,7 +42,7 @@ Install [Python](https://www.python.org/downloads/) on your machine and reboot. 
 
 > pip install -r requirements.txt
 
-> python sample/hdj.py
+> python src/hdj.py
 
 #### Issues
 

@@ -65,7 +65,7 @@ To run pytest locally using all test files, simply execute `pytest` in `\He-s-De
 
 To run pytest locally on a specific test file, simply execute `pytest -vv tests/test_file_name.py::test_specific_function` in `\He-s-Dead-Jim`.
 
-To run a testing coverage report (to look for untested code lines in the project), simply execute `pytest --cov-report term-missing --cov=sample tests/` in `\He-s-Dead-Jim`.
+To run a testing coverage report (to look for untested code lines in the project), simply execute `pytest --cov-report term-missing --cov=src tests/` in `\He-s-Dead-Jim`.
 
 <u>However, please note that upon any PR made to this repository, GitHub Actions checks all code commited using the `pytest` command to ensure they pass the bare minimum tests.</u>
 

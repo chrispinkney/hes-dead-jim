@@ -12,6 +12,17 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/chrispinkney/He-s-Dead-Jim",
+    install_requires=[
+        "argparse",
+        "requests",
+        "beautifulsoup4",
+        "datetime",
+        "colorama",
+        "black",
+        "pre-commit",
+        "pytest",
+        "pytest-cov",
+    ],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
