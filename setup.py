@@ -5,7 +5,7 @@ with open("docs/README.md", "r") as fh:
 
 setuptools.setup(
     name="He's Dead, Jim",
-    version="1.0.0",
+    version="1.0.2",
     author="Chris Pinkney",
     author_email="hey@chrispinkney.com",
     description="A command-line tool for finding and reporting dead/broken links in a file or webpage.",
@@ -13,15 +13,15 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/chrispinkney/He-s-Dead-Jim",
     install_requires=[
-        "argparse",
-        "requests",
-        "beautifulsoup4",
-        "datetime",
-        "colorama",
-        "black",
-        "pre-commit",
-        "pytest",
-        "pytest-cov",
+        "argparse == 1.4.0",
+        "requests == 2.24.0",
+        "beautifulsoup4 == 4.9.1",
+        "datetime == 4.3",
+        "colorama == 0.4.4",
+        "black == 20.8b1",
+        "pre-commit == 2.7.1",
+        "pytest == 6.1.2",
+        "pytest-cov == 2.10.1",
     ],
     packages=setuptools.find_packages(),
     classifiers=[
@@ -29,5 +29,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    entry_points={
+        "console_scripts": [
+            "hdj = src.hdj:main2",
+        ]
+    },
     python_requires=">=3.6",
 )

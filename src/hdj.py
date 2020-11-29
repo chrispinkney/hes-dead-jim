@@ -1,6 +1,6 @@
-import hdj_fileio
-import hdj_linkchecker
-import hdj_util
+import src.hdj_fileio as hdj_fileio  # setup.py does not include other files if imported not like this
+import src.hdj_linkchecker as hdj_linkchecker
+import src.hdj_util as hdj_util
 import argparse
 import sys
 import threading
@@ -70,11 +70,6 @@ def main(arguments):
         sys.exit(0)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        print("This program checks for broken links. Please specify -h for help.")
-        sys.exit(1)
-
 parser = argparse.ArgumentParser(
     description="See below for optional flags.", prefix_chars="-/"
 )
@@ -122,4 +117,18 @@ parser.add_argument(
     "-v", "--version", "-version", action="store_true", help="Specifies the version"
 )
 args = parser.parse_args()
-main(args)
+
+
+def main_wrapper():
+    main(args)
+
+
+if len(sys.argv) == 1:
+    print("This program checks for broken links. Please specify -h for help.")
+    sys.exit(1)
+else:
+    main_wrapper()
+
+
+if __name__ == "__main__":
+    main_wrapper()

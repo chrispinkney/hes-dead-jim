@@ -1,7 +1,7 @@
 build
 dist
-He_s_Dead_Jim.egg-info
 hdj_env
+He_s_Dead_Jim.egg-info
 __pycache__/
 .idea/usage.statistics.xml
 .idea/workspace.xml
