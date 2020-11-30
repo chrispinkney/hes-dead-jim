@@ -1,4 +1,4 @@
-name: 🐍🐍🐍 Publish major tags to PyPI and TestPyPI 🐍🐍🐍
+name: CD Pipeline - Publish to PyPI and TestPyPI
 
 on: push
 
