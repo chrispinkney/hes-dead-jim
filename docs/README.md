@@ -6,7 +6,7 @@
 - [Why?](#why)
 - [How?](#how)
 - [Features](#features)
-- [Usage](#usage)
+- [Usage](#usage--installation)
 - [Contribution](#contribution)
 - [Issues](#issues)
 - [License](#license)
