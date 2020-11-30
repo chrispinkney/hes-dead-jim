@@ -5,7 +5,7 @@ with open("docs/README.md", "r") as fh:
 
 setuptools.setup(
     name="He's Dead, Jim",
-    version="1.0.2",
+    version="1.0.4",
     author="Chris Pinkney",
     author_email="hey@chrispinkney.com",
     description="A command-line tool for finding and reporting dead/broken links in a file or webpage.",
@@ -32,7 +32,7 @@ setuptools.setup(
     ],
     entry_points={
         "console_scripts": [
-            "hdj = src.hdj:main2",
+            "hdj = src.hdj:main_wrapper",
         ]
     },
     python_requires=">=3.6",
