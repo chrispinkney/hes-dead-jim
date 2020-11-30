@@ -6,6 +6,18 @@ Here you'll find setup and various information regarding contribution to this pr
 
 See [usage](https://github.com/chrispinkney/He-s-Dead-Jim/blob/master/docs/README.md#usage) for more information in installed packages.
 
+# Installation (development version)
+
+Install [Python](https://www.python.org/downloads/) on your machine and reboot. Then:
+
+> `git clone https://github.com/chrispinkney/He-s-Dead-Jim.git`
+>
+> `cd He-s-Dead-Jim`
+>
+> `pip install .`
+>
+> `python src/hdj.py`
+
 # Configuration
 
 The following section contains information about workspace configuration regarding code formatting and linting used in this project.
