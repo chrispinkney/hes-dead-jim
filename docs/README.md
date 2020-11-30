@@ -2,6 +2,7 @@
   <img src="..\assets\hdj\hdj.gif" alt="He's Dead, Jim" width="738">
 </p>
 
+- [What?](#what)
 - [Why?](#why)
 - [How?](#how)
 - [Features](#features)
@@ -11,15 +12,19 @@
 - [License](#license)
 - [TODO](https://github.com/chrispinkney/He-s-Dead-Jim/issues)
 
+#### What
+
+He's Dead, Jim is a link checking program, specifically it is a command-line tool for finding and reporting dead links (e.g., broken URLs) in a specified file or website. This tool can be used to help locate broken URLs in an HTML page.
+
+#### How
+
+He's Dead, Jim aggregates (a fancy word for saying _grabs_) all href tags on a single page/file and creates get requests for each link on the page. Those requests are then reported back to the user along with the status code and a delightful colour coded message indicating the status of each link.
+
 #### Why
 
 He's Dead, Jim is a small project developed as part of my introduction to the world of Open Source Development, in addition to Git and GitHub.
 
 This is my project. There are many like it, but this one is mine.
-
-#### How
-
-He's Dead, Jim aggregates (a fancy word for saying _grabs_) all href tags on a single page/file and creates get requests for each link on the page. Those requests are then reported back to the user along with the status code and a delightful colour coded message indicating the status of each link.
 
 #### Features
 
@@ -31,7 +36,7 @@ He's Dead Jim features the following optional features:
 
 #### Usage / Installation
 
-Install [Python](https://www.python.org/downloads/) on your machine and reboot:
+Install [Python](https://www.python.org/downloads/) on your machine (*Be sure to select `Add Python 3.x to PATH` when installing*) and reboot (*optional*):
 
 > Open a shell/cmd and execute the following commands:
 >

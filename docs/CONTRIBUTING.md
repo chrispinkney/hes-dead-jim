@@ -1,7 +1,5 @@
 # Welcome
 
-Welcome to He's Dead, Jim! A personal project created and tweaked over the course of 4 months as part of Seneca College's Open Source Development(OSD600) course which I took during Winter 2020.
-
 Here you'll find setup and various information regarding contribution to this project.
 
 See [usage](https://github.com/chrispinkney/He-s-Dead-Jim/blob/master/docs/README.md#usage) for more information in installed packages.
