@@ -1,10 +1,13 @@
 name: CD Pipeline - Publish to PyPI and TestPyPI
 
-on: push
+on:
+  push:  # Pattern matched against refs/tags
+    tags:
+      - '*'  # Push events to every tag including hierarchical tags like v1.0/beta
 
 jobs:
   build-n-publish:
-    name: 🐍🐍🐍 Publish Python distributions to PyPI and TestPyPI 🐍🐍🐍
+    name: Publish Python distributions to PyPI and TestPyPI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
