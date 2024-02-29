@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"golang.org/x/net/html"
+	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -26,7 +29,8 @@ func parseArgs() {
 	case "-u":
 		processLink(os.Args[2])
 	case "-f":
-		processFile(os.Args[2])
+		links := processFile(os.Args[2])
+		processLinks(links)
 	default:
 		printUsage()
 	}
@@ -42,7 +46,48 @@ func processLink(link string) {
 	os.Exit(0)
 }
 
-func processFile(filename string) {
-	fmt.Println(filename)
-	os.Exit(0)
+func processFile(filename string) []string {
+	bs, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println("Error reading file: ", err)
+		os.Exit(1)
+	}
+
+	doc, err := html.Parse(strings.NewReader(string(bs)))
+	if err != nil {
+		fmt.Println("Error parsing HTML:", err)
+		os.Exit(1)
+	}
+
+	var links []string
+
+	var getLinks func(*html.Node)
+	getLinks = func(n *html.Node) {
+		if n.Type == html.ElementNode && n.Data == "a" {
+			for _, attr := range n.Attr {
+				if attr.Key == "href" {
+					links = append(links, attr.Val)
+				}
+			}
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			getLinks(c)
+		}
+	}
+
+	getLinks(doc)
+
+	return links
+}
+
+func processLinks(links []string) {
+	for _, l := range links {
+		resp, err := http.Get(l)
+		if err != nil {
+			fmt.Println(err.Error())
+			continue
+		}
+
+		fmt.Println(resp.Request.URL, "has a status of", resp.StatusCode)
+	}
 }
